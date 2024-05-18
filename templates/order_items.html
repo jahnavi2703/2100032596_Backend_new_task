@@ -1,0 +1,70 @@
+{% extends 'rendertemplate.html' %}
+
+{% block title %}
+    Order Items
+{% endblock %}
+
+{% block content %}
+    <style>
+        /* CSS styles for the centered and colorful table */
+        .table-container {
+            width: 80%; /* Adjust width as needed */
+            margin: 0 auto; /* Center the table horizontally */
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow content */
+        }
+
+        .table-container th, .table-container td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s;
+        }
+
+        .table-container th {
+            background-color: #007bff; /* Blue header background */
+            color: #fff; /* White text color */
+        }
+
+        .table-container tbody tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray background for even rows */
+        }
+
+        .table-container tbody tr:hover {
+            background-color: #ddd; /* Darker background on hover */
+        }
+    </style>
+
+    <h1 style="color: #007bff; text-align: center;">Order Items Page</h1>
+    <p style="text-align: center;">Here are the order items:</p>
+
+    <!-- Container to center the table -->
+    <div class="table-container">
+        <!-- Colorful table for order items -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Order Item ID</th>
+                    <th>Order ID</th>
+                    <th>Product ID</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order_items %}
+                <tr>
+                    <td>{{ item.OrderItemID }}</td>
+                    <td>{{ item.OrderID }}</td>
+                    <td>{{ item.ProductID }}</td>
+                    <td>{{ item.Quantity }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

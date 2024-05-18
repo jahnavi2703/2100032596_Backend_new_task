@@ -1,0 +1,171 @@
+{% extends 'rendertemplate.html' %}
+
+{% block title %}
+    Welcome to My Website
+{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+            font-family: Arial, sans-serif; /* Use Arial font */
+            color: #333; /* Dark gray text color */
+        }
+
+        h1 {
+            color: #007bff; /* Blue header color */
+        }
+
+        p {
+            margin-bottom: 20px; /* Add space below paragraphs */
+        }
+
+        table {
+            width: 100%; /* Table takes full width */
+            border-collapse: collapse; /* Collapse borders */
+            border: 1px solid #ddd; /* Add border */
+            margin-bottom: 40px; /* Add space below tables */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        th, td {
+            padding: 15px; /* Add padding */
+            text-align: left; /* Align text to left */
+            border-bottom: 1px solid #ddd; /* Add border bottom */
+            transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+
+        th {
+            background-color: #007bff; /* Blue header background */
+            color: #fff; /* White text color */
+        }
+
+        tbody tr:hover {
+            background-color: #f2f2f2; /* Light gray background on hover */
+        }
+
+        a {
+            color: #007bff; /* Blue link color */
+            text-decoration: none; /* Remove underline */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+        /* Animation effects */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fadeIn {
+            animation-name: fadeIn;
+            animation-duration: 1s;
+        }
+    </style>
+
+    <h1>Welcome to My Website!</h1>
+    <p>This is a sample Flask application to display tables.</p>
+    <p>Please navigate to the following pages:</p>
+    <ul>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/customers">Customers</a></li>
+        <li><a href="/orders">Orders</a></li>
+        <li><a href="/order_items">Order Items</a></li>
+        <li><a href="/query">ALL QUERIES EXECUTED</a></li>
+
+
+    </ul>
+
+    <h2>Products</h2>
+    <table class="fadeIn">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.ProductID }}</td>
+                <td>{{ product.ProductName }}</td>
+                <td>{{ product.Price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Customers</h2>
+    <table class="fadeIn">
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.CustomerID }}</td>
+                <td>{{ customer.FirstName }}</td>
+                <td>{{ customer.LastName }}</td>
+                <td>{{ customer.Email }}</td>
+                <td>{{ customer.DateOfBirth }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Orders</h2>
+    <table class="fadeIn">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer ID</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.OrderID }}</td>
+                <td>{{ order.CustomerID }}</td>
+                <td>{{ order.OrderDate }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Order Items</h2>
+    <table class="fadeIn">
+        <thead>
+            <tr>
+                <th>Order Item ID</th>
+                <th>Order ID</th>
+                <th>Product ID</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order_items %}
+            <tr>
+                <td>{{ item.OrderItemID }}</td>
+                <td>{{ item.OrderID }}</td>
+                <td>{{ item.ProductID }}</td>
+                <td>{{ item.Quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

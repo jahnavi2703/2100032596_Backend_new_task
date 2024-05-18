@@ -1,0 +1,72 @@
+{% extends 'rendertemplate.html' %}
+
+{% block title %}
+    Customers
+{% endblock %}
+
+{% block content %}
+    <style>
+        /* CSS styles for the centered and colorful table */
+        .table-container {
+            width: 80%; /* Adjust width as needed */
+            margin: 0 auto; /* Center the table horizontally */
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow content */
+        }
+
+        .table-container th, .table-container td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s;
+        }
+
+        .table-container th {
+            background-color: #007bff; /* Blue header background */
+            color: #fff; /* White text color */
+        }
+
+        .table-container tbody tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray background for even rows */
+        }
+
+        .table-container tbody tr:hover {
+            background-color: #ddd; /* Darker background on hover */
+        }
+    </style>
+
+    <h1 style="color: #007bff; text-align: center;">Customers Page</h1>
+    <p style="text-align: center;">Here are the customers:</p>
+
+    <!-- Container to center the table -->
+    <div class="table-container">
+        <!-- Colorful table for customers -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.CustomerID }}</td>
+                    <td>{{ customer.FirstName }}</td>
+                    <td>{{ customer.LastName }}</td>
+                    <td>{{ customer.Email }}</td>
+                    <td>{{ customer.DateOfBirth }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Query Results</h1>
+
+    <!-- Query 1: List all customers -->
+    <h2>Query 1: List all customers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in query1_data %}
+            <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Query 2: Find all orders placed in January 2023 -->
+    <h2>Query 2: Find all orders placed in January 2023</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer ID</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in query2_data %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.customer_id }}</td>
+                <td>{{ order.order_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Query 3: Get the details of each order, including the customer name and email -->
+    <h2>Query 3: Get the details of each order, including the customer name and email</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in query3_data %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.customer_name }}</td>
+                <td>{{ order.customer_email }}</td>
+                <td>{{ order.order_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Query 4: List the products purchased in a specific order -->
+    <h2>Query 4: List the products purchased in a specific order</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in query4_data %}
+            <tr>
+                <td>{{ item.order_id }}</td>
+                <td>{{ item.product_id }}</td>
+                <td>{{ item.product_name }}</td>
+                <td>{{ item.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Query 5: Calculate the total amount spent by each customer -->
+    <h2>Query 5: Calculate the total amount spent by each customer</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Total Amount Spent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in query5_data %}
+            <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.total_amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Query 6: Find the most popular product -->
+    <h2>Query 6: Find the most popular product</h2>
+    <p>The most popular product is: {{ query6_data }}</p>
+
+    <!-- Query 7: Get the total number of orders and the total sales amount for each month in 2023 -->
+    <h2>Query 7: Get the total number of orders and the total sales amount for each month in 2023</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Total Orders</th>
+                <th>Total Sales Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for month in query7_data %}
+            <tr>
+                <td>{{ month.month }}</td>
+                <td>{{ month.total_orders }}</td>
+                <td>{{ month.total_sales }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Query 8: Find customers who have spent more than $1000 -->
+    <h2>Query 8: Find customers who have spent more than $1000</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Total Amount Spent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in query8_data %}
+            <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.total_amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Repeat the above structure for Query 4 to Query 8 -->
+
+</body>
+</html>
